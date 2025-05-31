@@ -1,10 +1,23 @@
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
+import EmployeesStats from './components/employees/employees-stats';
+
 export default function DashboardPage() {
   return (
-    <div>Dashboard</div>
-    // <div className="flex flex-col items-center justify-center h-screen">
-    //   <h1 className="text-2xl font-bold mb-4">Dashboard</h1>
-    //   <p className="text-gray-600">Welcome to your dashboard!</p>
-    //   {/* Add more dashboard content here */}
-    // </div>
+    <div>
+      <Tabs defaultValue="employees" className="w-full">
+        <TabsList className="mb-4">
+          <TabsTrigger value="employees">Employees Stats</TabsTrigger>
+          <TabsTrigger value="teams">Teams Stats</TabsTrigger>
+        </TabsList>
+
+        <TabsContent value="employees">
+          <EmployeesStats />
+        </TabsContent>
+
+        <TabsContent value="teams">
+          <h2 className="text-2xl font-bold">Teams Stats</h2>
+        </TabsContent>
+      </Tabs>
+    </div>
   );
 }
