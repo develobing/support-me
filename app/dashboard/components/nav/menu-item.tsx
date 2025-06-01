@@ -1,8 +1,10 @@
 'use client';
 
+import { DrawerContext } from '@/components/ui/drawer';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useContext } from 'react';
 
 type Props = {
   children?: React.ReactNode;
@@ -12,6 +14,7 @@ type Props = {
 export default function MenuItem({ children, href }: Props) {
   const pathname = usePathname();
   const isActive = pathname === href;
+  const { onClose } = useContext(DrawerContext);
 
   return (
     <Link
@@ -21,6 +24,7 @@ export default function MenuItem({ children, href }: Props) {
           'bg-primary hover:bg-primary dark:hover:bg-primary hover:text-primary-foreground text-primary-foreground'
       )}
       href={href}
+      onClick={onClose}
     >
       {children}
     </Link>
